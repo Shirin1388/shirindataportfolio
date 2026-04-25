@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav        from "../components/Nav.astro";
+import Hero       from "../components/Hero.astro";
+import About      from "../components/About.astro";
+import Skills     from "../components/Skills.astro";
+import Projects   from "../components/Projects.astro";
+import Work       from "../components/Work.astro";
+import Contact    from "../components/Contact.astro";
+import Footer     from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="Your Name — BI Engineer Portfolio"
+  description="Business Intelligence Engineer based in Perth, WA. I design data pipelines, semantic layers, and dashboards that turn raw data into clear decisions."
+>
+  <Nav />
+  <main>
+    <Hero    />
+    <div class="divider"></div>
+    <About   />
+    <div class="divider"></div>
+    <Skills  />
+    <div class="divider"></div>
+    <Projects />
+    <div class="divider"></div>
+    <Work    />
+    <div class="divider"></div>
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>
