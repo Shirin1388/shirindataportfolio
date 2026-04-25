@@ -29,9 +29,9 @@ jobs:
       - name: Install, build, and upload site
         uses: withastro/action@v3
         # Options (uncomment if needed):
-        # with:
-        #   node-version: 22
-        #   package-manager: npm
+        with:
+          package-manager: npm
+          #   node-version: 22
 
   deploy:
     name: Deploy to GitHub Pages
