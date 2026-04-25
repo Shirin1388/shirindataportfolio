@@ -1,0 +1,190 @@
+---
+const skillGroups = [
+  {
+    category: "Data Modelling & Warehousing",
+    icon: "🗄️",
+    skills: [
+      { name: "dbt (Core & Cloud)", level: 95 },
+      { name: "BigQuery",           level: 90 },
+      { name: "Snowflake",          level: 82 },
+      { name: "Redshift",           level: 75 },
+      { name: "Dimensional Modelling", level: 92 },
+    ],
+  },
+  {
+    category: "Visualisation & BI Tools",
+    icon: "📊",
+    skills: [
+      { name: "Power BI",         level: 95 },
+      { name: "Looker / LookML",  level: 85 },
+      { name: "Tableau",          level: 78 },
+      { name: "Metabase",         level: 70 },
+    ],
+  },
+  {
+    category: "Programming & Query",
+    icon: "💻",
+    skills: [
+      { name: "SQL (Advanced)",   level: 98 },
+      { name: "Python (pandas, polars, SQLAlchemy)", level: 88 },
+      { name: "Bash / Linux",     level: 72 },
+      { name: "Git",              level: 85 },
+    ],
+  },
+  {
+    category: "Orchestration & Engineering",
+    icon: "⚙️",
+    skills: [
+      { name: "Apache Airflow",   level: 82 },
+      { name: "Fivetran / Stitch", level: 78 },
+      { name: "Docker",           level: 70 },
+      { name: "Terraform (basics)", level: 55 },
+    ],
+  },
+];
+---
+
+<section class="section" id="skills">
+  <div class="container">
+    <p class="section-label">Technical Skills</p>
+    <h2 class="section-title">A full-stack view of the BI toolchain</h2>
+
+    <div class="skills-grid">
+      {skillGroups.map((group) => (
+        <div class="skill-card card">
+          <div class="skill-cat">
+            <span class="cat-icon">{group.icon}</span>
+            <h3 class="cat-title">{group.category}</h3>
+          </div>
+          <ul class="skill-list">
+            {group.skills.map((s) => (
+              <li class="skill-item">
+                <div class="skill-header">
+                  <span class="skill-name">{s.name}</span>
+                  <span class="skill-pct">{s.level}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div
+                    class="skill-fill"
+                    style={`--target: ${s.level}%`}
+                  ></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Soft skills strip -->
+    <div class="soft-strip">
+      <p class="soft-label">Also bring to the table →</p>
+      <div class="soft-tags">
+        {[
+          "Stakeholder Communication",
+          "Requirements Gathering",
+          "Data Governance",
+          "Performance Tuning",
+          "Code Review",
+          "Cross-functional Collaboration",
+          "Agile / Scrum",
+          "Documentation",
+        ].map(s => <span class="tag teal">{s}</span>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .skill-cat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .cat-icon { font-size: 1.3rem; }
+  .cat-title {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+  .skill-name {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .skill-pct {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    width: 0;
+    animation: fillBar 1s ease forwards;
+    animation-delay: 0.3s;
+  }
+  @keyframes fillBar {
+    to { width: var(--target); }
+  }
+
+  /* ── Soft skills ── */
+  .soft-strip {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .soft-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .soft-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .soft-strip { flex-direction: column; align-items: flex-start; }
+  }
+</style>

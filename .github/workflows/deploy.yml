@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Runs on every push to the `main` branch
+  push:
+    branches: [main]
+  # Lets you trigger a deployment manually from the GitHub Actions tab
+  workflow_dispatch:
+
+# Allow the job to read repo contents and write to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time — cancel in-progress runs if a new push arrives
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install, build, and upload site
+        uses: withastro/action@v3
+        # Options (uncomment if needed):
+        # with:
+        #   node-version: 22
+        #   package-manager: npm
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

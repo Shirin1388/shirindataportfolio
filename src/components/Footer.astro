@@ -1,0 +1,47 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="divider"></div>
+  <div class="container footer-inner">
+    <p class="footer-copy">
+      © {year} · Built with
+      <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+      · Designed & developed by <strong>Your Name</strong>
+    </p>
+    <p class="footer-mono">
+      <span class="footer-bracket">{`{ `}</span>
+      BI Engineer
+      <span class="footer-bracket">{` }`}</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-bottom: 2.5rem;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+  .footer-copy {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .footer-copy a { color: var(--text-muted); }
+  .footer-copy a:hover { color: var(--accent); }
+  .footer-copy strong { color: var(--text-muted); font-weight: 500; }
+
+  .footer-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .footer-bracket { color: var(--accent); }
+</style>

@@ -1,0 +1,231 @@
+---
+const jobs = [
+  {
+    company: "Acme Analytics",
+    role: "Senior BI Engineer",
+    period: "2022 — Present",
+    location: "Perth, WA",
+    desc: "Lead the BI chapter of a 6-person data team. Own the end-to-end data stack from ingestion (Fivetran) through transformation (dbt on BigQuery) to delivery (Power BI, Looker). Drive data-modelling standards and review all SQL/dbt changes.",
+    achievements: [
+      "Rebuilt the company's legacy reporting suite, cutting load times by 90%",
+      "Introduced dbt and established a code-review-first culture for SQL",
+      "Designed a Customer 360 data product used by 3 departments",
+      "Mentored 2 junior analysts transitioning into engineering roles",
+    ],
+    tags: ["dbt", "BigQuery", "Power BI", "Looker", "Python", "Airflow"],
+    current: true,
+  },
+  {
+    company: "RetailCo",
+    role: "BI Developer",
+    period: "2020 — 2022",
+    location: "Perth, WA",
+    desc: "Embedded BI developer within the IT and Finance teams of a national retail chain. Built and maintained Tableau dashboards consumed by 150+ store managers and 12 executives. Managed the Snowflake warehouse.",
+    achievements: [
+      "Delivered real-time inventory dashboard across 200+ stores",
+      "Automated financial reconciliation saving 4 hrs/week per analyst",
+      "Maintained 99.9% dashboard uptime over 2 years",
+    ],
+    tags: ["Tableau", "Snowflake", "SQL", "Python", "Stitch"],
+    current: false,
+  },
+  {
+    company: "DataFirst Consulting",
+    role: "Junior Data Analyst",
+    period: "2018 — 2020",
+    location: "Perth, WA",
+    desc: "Analyst role within a boutique data consultancy serving SMBs. Delivered ad-hoc analysis, Excel/Power BI reporting, and light data engineering for clients across finance, logistics, and healthcare.",
+    achievements: [
+      "Built 20+ Power BI reports from scratch for 8 clients",
+      "Learned SQL and Python through self-study, applied to automate manual reports",
+      "Received 'Rising Star' internal recognition in 2019",
+    ],
+    tags: ["Power BI", "SQL", "Excel", "Python"],
+    current: false,
+  },
+];
+---
+
+<section class="section" id="work">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+
+    <div class="timeline">
+      {jobs.map((job, i) => (
+        <div class={`timeline-item ${job.current ? "active" : ""}`}>
+          <!-- Dot + line -->
+          <div class="timeline-track">
+            <div class="timeline-dot"></div>
+            {i < jobs.length - 1 && <div class="timeline-line"></div>}
+          </div>
+
+          <!-- Content -->
+          <div class="timeline-content card">
+            <div class="job-header">
+              <div>
+                <h3 class="job-role">{job.role}</h3>
+                <p class="job-company">{job.company} · <span class="job-loc">{job.location}</span></p>
+              </div>
+              <span class={`job-period ${job.current ? "current" : ""}`}>
+                {job.current && <span class="current-dot"></span>}
+                {job.period}
+              </span>
+            </div>
+
+            <p class="job-desc">{job.desc}</p>
+
+            <ul class="job-achievements">
+              {job.achievements.map(a => (
+                <li>
+                  <span class="ach-arrow">→</span>
+                  {a}
+                </li>
+              ))}
+            </ul>
+
+            <div class="job-tags">
+              {job.tags.map(t => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Track ── */
+  .timeline-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.6rem;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .timeline-item.active .timeline-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+
+  .timeline-line {
+    flex: 1;
+    width: 2px;
+    background: var(--border-soft);
+    margin-top: 8px;
+    min-height: 40px;
+  }
+
+  /* ── Card ── */
+  .timeline-content {
+    margin-bottom: 0;
+  }
+  .timeline-item.active .timeline-content {
+    border-color: rgba(245, 166, 35, 0.2);
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .job-role {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .job-company {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+  }
+  .job-loc { color: var(--text-dim); }
+
+  .job-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .job-period.current { color: var(--accent); }
+  .current-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease infinite;
+  }
+
+  .job-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .job-achievements {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .job-achievements li {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .ach-arrow {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  @media (max-width: 600px) {
+    .timeline-item { grid-template-columns: 24px 1fr; gap: 1rem; }
+    .job-header { flex-direction: column; }
+  }
+</style>

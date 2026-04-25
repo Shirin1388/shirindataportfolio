@@ -1,0 +1,225 @@
+---
+---
+
+<section class="hero">
+  <!-- Ambient background blobs -->
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <p class="hero-eyebrow fade-up">
+      <span class="dot"></span> Available for opportunities
+    </p>
+
+    <h1 class="hero-name fade-up delay-1">
+      Your Name
+    </h1>
+
+    <h2 class="hero-role fade-up delay-2">
+      Business Intelligence<br />
+      <em>Engineer</em>
+    </h2>
+
+    <p class="hero-desc fade-up delay-3">
+      I transform complex data into actionable intelligence — designing
+      data pipelines, semantic layers, and intuitive dashboards that help
+      organisations make faster, smarter decisions.
+    </p>
+
+    <div class="hero-cta fade-up delay-4">
+      <a href="#projects" class="btn btn-filled">View Projects</a>
+      <a href="#contact"  class="btn">Get in Touch</a>
+    </div>
+
+    <!-- Quick stat bar -->
+    <div class="hero-stats fade-up delay-4">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years in BI</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Dashboards Built</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">1B+</span>
+        <span class="stat-label">Rows Processed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint fade-up delay-4">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 8rem 0 4rem;
+  }
+
+  /* ── Ambient blobs ── */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+  }
+  .blob-1 {
+    width: 600px; height: 600px;
+    background: var(--accent);
+    top: -200px; right: -150px;
+  }
+  .blob-2 {
+    width: 400px; height: 400px;
+    background: var(--teal);
+    bottom: 0; left: -100px;
+  }
+
+  /* ── Content ── */
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1);    }
+    50%       { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-name {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-role {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+  .hero-role em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── Stats ── */
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── Scroll hint ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--text-dim), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1;   }
+  }
+
+  @media (max-width: 600px) {
+    .scroll-hint { display: none; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+  }
+</style>
