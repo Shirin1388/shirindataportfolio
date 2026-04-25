@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 // If the repo is named USERNAME.github.io, you can remove the `base` line entirely.
 
 export default defineConfig({
-  site: "https://YOUR_GITHUB_USERNAME.github.io",
-  base: "/YOUR_REPO_NAME",
+  site: "https://Shirin1388.github.io",
+  base: "/shirindataportfolio",
   output: "static",
 });
